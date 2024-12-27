@@ -1,3 +1,5 @@
+
+
 version: "3.7"
 
 services:
@@ -6,6 +8,6 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRESQL_USERNAME=docker
-      - POSTGRESQL_PASSWORD=password
-      - POSTGRESQL_DATABASE=bankGarupa
+      - POSTGRESQL_USERNAME=${PG_USERNAME}
+      - POSTGRESQL_PASSWORD=${PG_PASSWORD}
+      - POSTGRESQL_DATABASE=${PG_DATABASE}
