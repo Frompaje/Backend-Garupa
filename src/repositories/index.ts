@@ -1,19 +1,34 @@
 import { pg } from "../database";
+import { v4 as uuid } from "uuid";
 import { TransferInput } from "./types";
 
 export class TransferRepository {
   async create({
-    id,
     externalId,
     amount,
     expectedOn,
     status,
-    createdAt,
-    updatedAt,
   }: TransferInput) {
-    await pg.query(
-      "INSERT INTO TRANSFER(id,date,pix_key,value,due_date,created_at) VALUES ($1,$2,$3,$4,$5,$6)",
-      [id, externalId, amount, expectedOn, status, createdAt, updatedAt]
-    );
+
+    const id = uuid();
+    const createdAt = new Date()
+
+    try {
+      await pg.query(
+        "INSERT INTO TRANSFER(id,externalId,amount,expectedOn,status,createdAt) VALUES ($1,$2,$3,$4,$5,$6)",
+        [id, externalId, amount, expectedOn, status, createdAt]
+      );
+    } catch (err) {
+      console.log(err)
+    }
+   
+  }
+
+  async listAll(id: string) {
+    const transfer = await pg.query("SELECT * FROM TRANSFER WHERE id = $1", [
+      id,
+    ]);
+
+    return { transfer };
   }
 }
