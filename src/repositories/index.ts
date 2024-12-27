@@ -15,7 +15,7 @@ export class TransferRepository {
 
     try {
       await pg.query(
-        "INSERT INTO TRANSFER(id,externalId,amount,expectedOn,status,createdAt) VALUES ($1,$2,$3,$4,$5,$6)",
+        "INSERT INTO TRANSFERS(id,externalId,amount,expectedOn,status,createdAt) VALUES ($1,$2,$3,$4,$5,$6)",
         [id, externalId, amount, expectedOn, status, createdAt]
       );
     } catch (err) {
@@ -25,7 +25,7 @@ export class TransferRepository {
   }
 
   async listAll(id: string) {
-    const transfer = await pg.query("SELECT * FROM TRANSFER WHERE id = $1", [
+    const transfer = await pg.query("SELECT * FROM TRANSFERS WHERE id = $1", [
       id,
     ]);
 
