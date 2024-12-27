@@ -10,8 +10,7 @@ export class CreatedTransferUseCase {
     }
 
     const today = new Date();
-
-    if (expectedOn && new Date(expectedOn) < today) {
+    if (expectedOn && new Date(expectedOn) > today) {
       throw new DateExpiredError();
     }
 
@@ -28,5 +27,5 @@ export type Input = {
   externalId: string;
   amount: number;
   expectedOn?: string | Date;
-  status: "Pending" | "Completed" | "Failed" | "Processing";
+  status: "Completed" | "Failed" | "Processing";
 };
