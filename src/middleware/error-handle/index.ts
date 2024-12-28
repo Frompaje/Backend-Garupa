@@ -3,6 +3,7 @@ import { DuplicateExternalIdError } from "../../shared/error/duplicate-external-
 import { InvalidTransferDataError } from "../../shared/error/invalid-transfer-data-error";
 import type { ErrorRequestHandler } from "express";
 import { Request, Response, NextFunction } from "express";
+import { TransferDoesNotExist } from "../../shared/error/transfer-does-not-exist-error";
 
 export const errorHandle: ErrorRequestHandler = (
   error,
@@ -34,6 +35,15 @@ export const errorHandle: ErrorRequestHandler = (
     });
     return;
   }
+
+  if (error instanceof TransferDoesNotExist) {
+    res.status(404).send({
+      message: error.message,
+    });
+    return;
+  }
+
+
 
   res.status(500).send({
     message: "Internal server error",

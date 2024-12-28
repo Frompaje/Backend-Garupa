@@ -6,23 +6,22 @@ import { DuplicateExternalIdError } from "../shared/error/duplicate-external-id-
 export class TransferRepository {
   async create({ externalId, amount, expectedOn, status }: TransferInput) {
     const id = uuid();
-    const createdAt = new Date();
 
     try {
       await pg.query(
-        "INSERT INTO TRANSFERS(id,external_id,amount,expected_on,status,created_at) VALUES ($1,$2,$3,$4,$5,$6)",
-        [id, externalId, amount, expectedOn, status, createdAt]
+        "INSERT INTO TRANSFERS(id,external_id,amount,expected_on,status) VALUES ($1,$2,$3,$4,$5)",
+        [id, externalId, amount, expectedOn, status]
       );
     } catch (error) {
       throw new DuplicateExternalIdError();
     }
   }
 
-  async listAll(id: string) {
-    const transfer = await pg.query("SELECT * FROM TRANSFERS WHERE id = $1", [
+  async listTransferById(id: string) {
+    const { rows } = await pg.query("SELECT * FROM TRANSFERS WHERE id = $1", [
       id,
     ]);
-
-    return { transfer };
+   
+    return rows
   }
 }
