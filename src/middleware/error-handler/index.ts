@@ -5,7 +5,7 @@ import type { ErrorRequestHandler } from "express";
 import { Request, Response, NextFunction } from "express";
 import { TransferDoesNotExist } from "../../shared/error/transfer-does-not-exist-error";
 
-export const errorHandle: ErrorRequestHandler = (
+export const errorHandler: ErrorRequestHandler = (
   error,
   _: Request,
   res: Response,
