@@ -34,7 +34,7 @@ export class TransferController {
     }
   }
 
-  async listTransferById(req: Request, res: Response, next: NextFunction) {
+  async getTransferById(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = ListTransferSchema.parse(req.params);
 
