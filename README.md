@@ -78,7 +78,7 @@ npm run dev
 
 > <b>Essa rota permite que você recupere as informações de uma transferência existente, especificando seu id na URL.</b>
 
-#### GET http://localhost:3333/:id
+#### GET http://localhost:3333/transfers/:id
 
 <b>Request Params: </b>
 
