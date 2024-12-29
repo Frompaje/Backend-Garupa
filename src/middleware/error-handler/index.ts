@@ -1,9 +1,9 @@
-import { DateExpiredError } from "../../shared/error/due-date-error";
 import { DuplicateExternalIdError } from "../../shared/error/duplicate-external-id-error";
 import { InvalidTransferDataError } from "../../shared/error/invalid-transfer-data-error";
 import type { ErrorRequestHandler } from "express";
 import { Request, Response, NextFunction } from "express";
 import { TransferDoesNotExist } from "../../shared/error/transfer-does-not-exist-error";
+import { DueDateError } from "../../shared/error/due-date-error";
 
 export const errorHandler: ErrorRequestHandler = (
   error,
@@ -22,7 +22,7 @@ export const errorHandler: ErrorRequestHandler = (
     return;
   }
 
-  if (error instanceof DateExpiredError) {
+  if (error instanceof DueDateError) {
     res.status(422).send({
       message: error.message,
     });
