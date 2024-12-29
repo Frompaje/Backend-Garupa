@@ -21,7 +21,7 @@ export class TransferRepository {
     const { rows } = await pg.query("SELECT * FROM TRANSFERS WHERE id = $1", [
       id,
     ]);
-   
-    return rows
+    console.log(rows[0])
+    return rows[0]
   }
 }

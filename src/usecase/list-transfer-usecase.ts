@@ -6,7 +6,7 @@ export class ListTransferUseCase {
 
   async execute(id: string) {
     const transfer = await this.repository.listTransferById(id);
-
+    
     if (!transfer) {
       throw new TransferDoesNotExist();
     }
