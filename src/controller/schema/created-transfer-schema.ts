@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-
 export const CreatedTransferSchema = z.object({
   externalId: z.string(),
   amount: z.number(),

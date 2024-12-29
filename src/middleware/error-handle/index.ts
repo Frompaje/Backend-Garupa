@@ -12,14 +12,14 @@ export const errorHandle: ErrorRequestHandler = (
   next: NextFunction
 ) => {
   if (res.headersSent) {
-    return next(error);  
+    return next(error);
   }
 
   if (error instanceof InvalidTransferDataError) {
     res.status(400).send({
       message: error.message,
     });
-    return; 
+    return;
   }
 
   if (error instanceof DateExpiredError) {
@@ -42,8 +42,6 @@ export const errorHandle: ErrorRequestHandler = (
     });
     return;
   }
-
-
 
   res.status(500).send({
     message: "Internal server error",
