@@ -11,30 +11,38 @@ export class TransferController {
     res: Response,
     next: NextFunction
   ): Promise<any> {
-    const { externalId, amount, expectedOn, status } =
-      CreatedTransferSchema.parse(req.body);
+    try {
+      const { externalId, amount, expectedOn, status } =
+        CreatedTransferSchema.parse(req.body);
 
-    const repository = new TransferRepository();
-    const usecase = new CreatedTransferUseCase(repository);
+      const repository = new TransferRepository();
+      const usecase = new CreatedTransferUseCase(repository);
 
-    await usecase.execute({
-      externalId,
-      amount,
-      expectedOn,
-      status,
-    });
+      await usecase.execute({
+        externalId,
+        amount,
+        expectedOn,
+        status,
+      });
 
-    res.status(201).send("Transfer created successfully");
+      res.status(201).send("Transfer created successfully");
+    } catch (error) {
+      next(error);
+    }
   }
 
   async listTransferById(req: Request, res: Response, next: NextFunction) {
-    const { id } = ListTransferSchema.parse(req.params);
+    try {
+      const { id } = ListTransferSchema.parse(req.params);
+      
+      const repository = new TransferRepository();
+      const usecase = new ListTransferUseCase(repository);
 
-    const repository = new TransferRepository();
-    const usecase = new ListTransferUseCase(repository);
+      const transfer = await usecase.execute(id);
 
-    const transfer = await usecase.execute(id);
-
-    res.status(200).send(transfer);
+      res.status(200).send(transfer);
+    } catch (error) {
+      next(error);
+    }
   }
 }
