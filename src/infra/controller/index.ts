@@ -4,6 +4,7 @@ import { ListTransferSchema } from "./schema/list-transfer-schema";
 import { TransferRepository } from "../../app/repository";
 import { CreatedTransferUseCase } from "../../app/usecase/created-transfer-usecase";
 import { ListTransferUseCase } from "../../app/usecase/list-transfer-usecase";
+import { logger } from "../../config/logger";
 
 export class TransferController {
   async createdTransfer(
@@ -26,7 +27,9 @@ export class TransferController {
       });
 
       res.status(201).send("Transfer created successfully");
+      logger.info("[POST] /transfer - 201 - Transfer created successfully ")
     } catch (error) {
+      logger.error(error)
       next(error);
     }
   }
@@ -34,14 +37,16 @@ export class TransferController {
   async listTransferById(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = ListTransferSchema.parse(req.params);
-      
+
       const repository = new TransferRepository();
       const usecase = new ListTransferUseCase(repository);
 
       const transfer = await usecase.execute(id);
 
       res.status(200).send(transfer);
+      logger.info(`[GET] /transfer/${id} - 200 - Transfer retrieved successfully`)
     } catch (error) {
+      logger.error(error)
       next(error);
     }
   }
