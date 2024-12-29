@@ -7,19 +7,20 @@ import { v4 as uuid } from "uuid";
 export class CreatedTransferUseCase {
   constructor(private readonly repository: TransferRepository) {}
   async execute({ externalId, amount, expectedOn, status }: Input) {
+    
+    if (!externalId || !amount || !status) {
+      throw new InvalidTransferDataError();
+    }
+    
+    const today = new Date();
+    if (expectedOn && new Date(expectedOn) > today) {
+      throw new DueDateError();
+    }
+    
     const transfer = await this.repository.listTransferByExternalId(externalId);
 
     if (transfer) {
       throw new DuplicateExternalIdError();
-    }
-
-    if (!externalId || !amount || !status) {
-      throw new InvalidTransferDataError();
-    }
-
-    const today = new Date();
-    if (expectedOn && new Date(expectedOn) > today) {
-      throw new DueDateError();
     }
 
     const id = uuid();
