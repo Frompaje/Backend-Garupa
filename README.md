@@ -24,6 +24,7 @@ Persistência de Dados: Todas as transferências serão armazenadas em um banco 
 - <b>dotenv:</b> Biblioteca para carregar variáveis de ambiente a partir de um arquivo .env, útil para configurar dados sensíveis como credenciais de banco de dados e chaves de API. <br>
 - <b>vitest:</b> Framework de testes para JavaScript e TypeScript, otimizado para testes rápidos e integrados, utilizado para testar o backend do sistema.<br>
 - <b>vitest-mock-extended:</b> Biblioteca para mocks avançados durante testes com Vitest, permitindo simulações mais precisas e extensas de funções e objetos.<br>
+  <b>pino:</b> Biblioteca de logging para Node.js, altamente performática e configurável, utilizada para gerar logs estruturados e facilitar o rastreamento de eventos no backend do sistema.<br>
 
 ## Como rodar
 
