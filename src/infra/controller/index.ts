@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { CreatedTransferSchema } from "./schema/created-transfer-schema";
-import { CreatedTransferUseCase } from "../usecase/created-transfer-usecase";
-import { TransferRepository } from "../repository";
 import { ListTransferSchema } from "./schema/list-transfer-schema";
-import { ListTransferUseCase } from "../usecase/list-transfer-usecase";
+import { TransferRepository } from "../../app/repository";
+import { CreatedTransferUseCase } from "../../app/usecase/created-transfer-usecase";
+import { ListTransferUseCase } from "../../app/usecase/list-transfer-usecase";
 
 export class TransferController {
   async createdTransfer(

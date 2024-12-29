@@ -1,6 +1,6 @@
-import { env } from "./config/env";
+import { env } from "./infra/env/env";
 import express  from "express";
-import { router } from "./routes";
+import { router } from "./infra/routes";
 
 const app = express();
 

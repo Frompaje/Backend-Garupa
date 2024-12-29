@@ -1,5 +1,5 @@
+import { TransferDoesNotExist } from "../../shared/error/transfer-does-not-exist-error";
 import { TransferRepository } from "../repository";
-import { TransferDoesNotExist } from "../shared/error/transfer-does-not-exist-error";
 
 export class ListTransferUseCase {
   constructor(private readonly repository: TransferRepository) {}

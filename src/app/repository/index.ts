@@ -1,4 +1,4 @@
-import { pg } from "../database";
+import { pg } from "../../infra/database";
 import { TransferInput } from "./types";
 
 export class TransferRepository {

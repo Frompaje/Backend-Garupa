@@ -3,7 +3,7 @@ import { expect, describe, it, beforeEach, vi } from "vitest";
 import { TransferRepository } from "../../repository";
 import { transferRepositoryMock } from "./mock/transfer-repository-mock";
 import { ListTransferUseCase } from "../list-transfer-usecase";
-import { TransferDoesNotExist } from "../../shared/error/transfer-does-not-exist-error";
+import { TransferDoesNotExist } from "../../../shared/error/transfer-does-not-exist-error";
 
 describe("[Usecase] List Transfer", () => {
   let usecase: ListTransferUseCase;

@@ -3,8 +3,8 @@ import { expect, describe, it, beforeEach, vi } from "vitest";
 import { CreatedTransferUseCase } from "../created-transfer-usecase";
 import { TransferRepository } from "../../repository";
 import { transferRepositoryMock } from "./mock/transfer-repository-mock";
-import { InvalidTransferDataError } from "../../shared/error/invalid-transfer-data-error";
-import { DueDateError } from "../../shared/error/due-date-error";
+import { DueDateError } from "../../../shared/error/due-date-error";
+import { InvalidTransferDataError } from "../../../shared/error/invalid-transfer-data-error";
 
 describe("[Usecase] Created Transfer", () => {
   let usecase: CreatedTransferUseCase;

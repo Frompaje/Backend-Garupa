@@ -1,6 +1,6 @@
 import { Router } from "express";
+import { errorHandler } from "../../middleware/error-handler";
 import { TransferController } from "../controller";
-import { errorHandler } from "../middleware/error-handler";
 
 export const router = Router();
 const { createdTransfer, listTransferById } = new TransferController();
