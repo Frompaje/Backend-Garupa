@@ -27,9 +27,9 @@ export class TransferController {
       });
 
       res.status(201).send("Transfer created successfully");
-      logger.info("[POST] /transfer - 201 - Transfer created successfully ")
+      logger.info("[POST] /transfer - 201 - Transfer created successfully");
     } catch (error) {
-      logger.error(error)
+      logger.error(error);
       next(error);
     }
   }
@@ -44,9 +44,11 @@ export class TransferController {
       const transfer = await usecase.execute(id);
 
       res.status(200).send(transfer);
-      logger.info(`[GET] /transfer/${id} - 200 - Transfer retrieved successfully`)
+      logger.info(
+        `[GET] /transfer/${id} - 200 - Transfer retrieved successfully`
+      );
     } catch (error) {
-      logger.error(error)
+      logger.error(error);
       next(error);
     }
   }
