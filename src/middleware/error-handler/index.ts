@@ -1,4 +1,4 @@
-import { DateExpiredError } from "../../shared/error/date-expired-error";
+import { DateExpiredError } from "../../shared/error/due-date-error";
 import { DuplicateExternalIdError } from "../../shared/error/duplicate-external-id-error";
 import { InvalidTransferDataError } from "../../shared/error/invalid-transfer-data-error";
 import type { ErrorRequestHandler } from "express";

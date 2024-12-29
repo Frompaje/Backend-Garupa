@@ -1,5 +1,5 @@
 import { TransferRepository } from "../repository";
-import { DateExpiredError } from "../shared/error/date-expired-error";
+import { DateExpiredError } from "../shared/error/due-date-error";
 import { InvalidTransferDataError } from "../shared/error/invalid-transfer-data-error";
 
 export class CreatedTransferUseCase {

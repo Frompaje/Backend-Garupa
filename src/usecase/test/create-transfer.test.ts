@@ -4,7 +4,7 @@ import { CreatedTransferUseCase } from "../created-transfer-usecase";
 import { TransferRepository } from "../../repository";
 import { transferRepositoryMock } from "./mock/transfer-repository-mock";
 import { InvalidTransferDataError } from "../../shared/error/invalid-transfer-data-error";
-import { DateExpiredError } from "../../shared/error/date-expired-error";
+import { DateExpiredError } from "../../shared/error/due-date-error";
 
 describe("[Usecase] Created Transfer", () => {
   let usecase: CreatedTransferUseCase;
