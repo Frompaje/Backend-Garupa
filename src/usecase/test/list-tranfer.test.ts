@@ -1,7 +1,7 @@
 import { mock } from "vitest-mock-extended";
 import { expect, describe, it, beforeEach, vi } from "vitest";
-import { TransferRepository } from "../../repositories";
-import { transferRepositoryMock } from "./mock/transfer-repostory-mock";
+import { TransferRepository } from "../../repository";
+import { transferRepositoryMock } from "./mock/transfer-repository-mock";
 import { ListTransferUseCase } from "../list-transfer-usecase";
 import { TransferDoesNotExist } from "../../shared/error/transfer-does-not-exist-error";
 

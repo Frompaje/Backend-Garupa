@@ -1,4 +1,4 @@
-import { TransferRepository } from "../repositories";
+import { TransferRepository } from "../repository";
 import { TransferDoesNotExist } from "../shared/error/transfer-does-not-exist-error";
 
 export class ListTransferUseCase {

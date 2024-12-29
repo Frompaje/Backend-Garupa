@@ -1,4 +1,4 @@
-import { TransferRepository } from "../repositories";
+import { TransferRepository } from "../repository";
 import { DateExpiredError } from "../shared/error/date-expired-error";
 import { InvalidTransferDataError } from "../shared/error/invalid-transfer-data-error";
 

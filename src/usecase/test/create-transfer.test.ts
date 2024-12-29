@@ -1,8 +1,8 @@
 import { mock } from "vitest-mock-extended";
 import { expect, describe, it, beforeEach, vi } from "vitest";
 import { CreatedTransferUseCase } from "../created-transfer-usecase";
-import { TransferRepository } from "../../repositories";
-import { transferRepositoryMock } from "./mock/transfer-repostory-mock";
+import { TransferRepository } from "../../repository";
+import { transferRepositoryMock } from "./mock/transfer-repository-mock";
 import { InvalidTransferDataError } from "../../shared/error/invalid-transfer-data-error";
 import { DateExpiredError } from "../../shared/error/date-expired-error";
 
