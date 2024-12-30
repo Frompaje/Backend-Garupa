@@ -10,9 +10,10 @@ export class TransferRepository {
   }
 
   async listTransferById(id: string) {
-    const { rows } = await pg.query("SELECT * FROM TRANSFERS WHERE id = $1", [
-      id,
-    ]);
+    const { rows } = await pg.query(
+      "SELECT id,external_id,amount,expected_on,status,created_at,updated_at FROM TRANSFERS WHERE id = $1",
+      [id]
+    );
 
     return rows[0];
   }
