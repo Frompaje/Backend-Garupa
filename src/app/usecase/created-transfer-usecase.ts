@@ -17,7 +17,7 @@ export class CreatedTransferUseCase {
       throw new DueDateError();
     }
     
-    const transfer = await this.repository.listTransferByExternalId(externalId);
+    const transfer = await this.repository.getTransferByExternalId(externalId);
 
     if (transfer) {
       throw new DuplicateExternalIdError();

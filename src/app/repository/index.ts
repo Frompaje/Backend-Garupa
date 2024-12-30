@@ -20,7 +20,7 @@ export class TransferRepository {
 
   async getTransferByExternalId(externalId: string) {
     const { rows } = await pg.query(
-      "SELECT * FROM TRANSFERS WHERE external_id = $1",
+      "SELECT id,external_id,amount,expected_on,status,created_at,updated_at FROM TRANSFERS WHERE external_id = $1",
       [externalId]
     );
 

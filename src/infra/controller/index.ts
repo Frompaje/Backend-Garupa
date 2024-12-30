@@ -3,7 +3,7 @@ import { CreatedTransferSchema } from "./schema/created-transfer-schema";
 import { ListTransferSchema } from "./schema/list-transfer-schema";
 import { TransferRepository } from "../../app/repository";
 import { CreatedTransferUseCase } from "../../app/usecase/created-transfer-usecase";
-import { ListTransferUseCase } from "../../app/usecase/list-transfer-usecase";
+import { GetTransferUseCase } from "../../app/usecase/get-transfer-usecase";
 import { logger } from "../../config/logger";
 
 export class TransferController {
@@ -39,7 +39,7 @@ export class TransferController {
       const { id } = ListTransferSchema.parse(req.params);
 
       const repository = new TransferRepository();
-      const usecase = new ListTransferUseCase(repository);
+      const usecase = new GetTransferUseCase(repository);
 
       const transfer = await usecase.execute(id);
 

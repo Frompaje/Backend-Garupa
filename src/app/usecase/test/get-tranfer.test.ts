@@ -2,17 +2,17 @@ import { mock } from "vitest-mock-extended";
 import { expect, describe, it, beforeEach, vi } from "vitest";
 import { TransferRepository } from "../../repository";
 import { transferRepositoryMock } from "./mock/transfer-repository-mock";
-import { ListTransferUseCase } from "../list-transfer-usecase";
+import { GetTransferUseCase } from "../get-transfer-usecase";
 import { TransferDoesNotExist } from "../../../shared/error/transfer-does-not-exist-error";
 
 describe("[Usecase] List Transfer", () => {
-  let usecase: ListTransferUseCase;
+  let usecase: GetTransferUseCase;
 
   let repository: TransferRepository;
 
   beforeEach(() => {
     repository = mock<TransferRepository>(transferRepositoryMock);
-    usecase = new ListTransferUseCase(repository);
+    usecase = new GetTransferUseCase(repository);
   });
 
   it("Should list a transfer", async () => {
@@ -26,7 +26,7 @@ describe("[Usecase] List Transfer", () => {
       updated_at: null,
     };
 
-    vi.spyOn(repository, "listTransferById").mockResolvedValueOnce(data);
+    vi.spyOn(repository, "getTransferById").mockResolvedValueOnce(data);
 
     expect(
       await usecase.execute("ea97cce3-11c9-46f9-a5a9-cb5480cdf561")
@@ -36,7 +36,7 @@ describe("[Usecase] List Transfer", () => {
   });
 
   it("Should show the error TransferDoesNotExist", async () => {
-    vi.spyOn(repository, "listTransferById").mockRejectedValueOnce(new TransferDoesNotExist());
+    vi.spyOn(repository, "getTransferById").mockRejectedValueOnce(new TransferDoesNotExist());
 
     expect(
       usecase.execute("ea97cce3-11c9-46f9-a5a9-cb5480cdf569")
