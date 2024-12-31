@@ -6,38 +6,39 @@ import { v4 as uuid } from "uuid";
 
 export class CreatedTransferUseCase {
   constructor(private readonly repository: TransferRepository) {}
-  async execute({ externalId, amount, expectedOn, status }: Input) {
-    
-    if (!externalId || !amount || !status) {
+  async execute({ external_id, amount, expected_on, status }: Input) {
+    if (!external_id || !amount || !status) {
       throw new InvalidTransferDataError();
     }
-    
+
     const today = new Date();
-    if (expectedOn && new Date(expectedOn) > today) {
+    if (expected_on && new Date(expected_on) > today) {
       throw new DueDateError();
     }
-    
-    const transfer = await this.repository.getTransferByExternalId(externalId);
+
+    const transfer = await this.repository.getTransferByExternalId(external_id);
 
     if (transfer) {
       throw new DuplicateExternalIdError();
     }
 
     const id = uuid();
+    const amountNumber = amount.substring(2).replace(",", ".");
+    const formatAmount = Number(amountNumber);
 
     await this.repository.create({
       id,
-      externalId,
-      amount,
-      expectedOn,
+      external_id,
+      amount:formatAmount,
+      expected_on,
       status,
     });
   }
 }
 
 export type Input = {
-  externalId: string;
-  amount: number;
-  expectedOn?: string | Date;
-  status: "Completed" | "Failed" | "Processing";
+  external_id: string;
+  amount: string;
+  status: string;
+  expected_on?: string;
 };

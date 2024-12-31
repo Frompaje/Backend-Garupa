@@ -1,7 +1,7 @@
 export type TransferInput = {
   id: string;
-  externalId: string;
+  external_id: string;
   amount: number;
-  expectedOn?: string | Date;
-  status:  "Completed" | "Failed" | "Processing";
+  expected_on?: string | Date;
+  status: string;
 };

@@ -13,16 +13,16 @@ export class TransferController {
     next: NextFunction
   ): Promise<any> {
     try {
-      const { externalId, amount, expectedOn, status } =
+      const { external_id, amount, expected_on, status } =
         CreatedTransferSchema.parse(req.body);
 
       const repository = new TransferRepository();
       const usecase = new CreatedTransferUseCase(repository);
 
       await usecase.execute({
-        externalId,
+        external_id,
         amount,
-        expectedOn,
+        expected_on,
         status,
       });
 
