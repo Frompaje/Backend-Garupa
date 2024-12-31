@@ -1,5 +1,5 @@
 export class TransferDoesNotExist extends Error {
   constructor() {
-    super("Transfer doesn't exist");
+    super("A transferência não existe");
   }
 }

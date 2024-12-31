@@ -1,5 +1,5 @@
 export class InvalidTransferDataError extends Error{
   constructor() {
-    super("[Transfer data is invalid]: externalId, amount, expectedOn, and status are required.")
+    super("[Os dados de transferência são inválidos]: external_id, amount, expected_on e status são obrigatórios.")
   }
 }
