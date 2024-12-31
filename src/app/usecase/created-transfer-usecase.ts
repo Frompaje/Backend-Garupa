@@ -23,9 +23,8 @@ export class CreatedTransferUseCase {
     }
 
     const id = uuid();
-    const amountNumber = amount.replace("R$", "").replace(",", ".").trim();
+    const amountNumber = amount.replace("R$", "").replace(/\./g, "").replace(",", ".").trim()
     const formatAmount = Number(amountNumber);
-
     await this.repository.create({
       id,
       external_id,
