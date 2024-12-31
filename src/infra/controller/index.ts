@@ -16,6 +16,8 @@ export class TransferController {
       const { external_id, amount, expected_on, status } =
         CreatedTransferSchema.parse(req.body);
 
+      console.log(external_id);
+
       const repository = new TransferRepository();
       const usecase = new CreatedTransferUseCase(repository);
 
