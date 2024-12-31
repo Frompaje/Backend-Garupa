@@ -23,13 +23,13 @@ export class CreatedTransferUseCase {
     }
 
     const id = uuid();
-    const amountNumber = amount.substring(2).replace(",", ".");
+    const amountNumber = amount.replace("R$", "").replace(",", ".").trim();
     const formatAmount = Number(amountNumber);
 
     await this.repository.create({
       id,
       external_id,
-      amount:formatAmount,
+      amount: formatAmount,
       expected_on,
       status,
     });
