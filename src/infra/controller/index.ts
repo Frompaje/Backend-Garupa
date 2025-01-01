@@ -13,8 +13,9 @@ export class TransferController {
     next: NextFunction
   ): Promise<any> {
     try {
-      const { external_id, amount, expected_on, status } =
-        CreatedTransferSchema.parse(req.body);
+      const { external_id, amount, expected_on } = CreatedTransferSchema.parse(
+        req.body
+      );
 
       const repository = new TransferRepository();
       const usecase = new CreatedTransferUseCase(repository);
@@ -23,7 +24,6 @@ export class TransferController {
         external_id,
         amount,
         expected_on,
-        status,
       });
 
       res.status(201).send("Transfer created successfully");
