@@ -4,8 +4,7 @@ export class ListAllTransferUseCase {
   constructor(private readonly repository: TransferRepository) {}
 
   async execute() {
-    const transfer = await this.repository.listAllTransfers();
-
-    return { transfer };
+    const transfers = await this.repository.listAllTransfers();
+    return { transfers };
   }
 }

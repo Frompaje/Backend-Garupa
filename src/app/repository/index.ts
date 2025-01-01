@@ -29,7 +29,6 @@ export class TransferRepository {
       "SELECT id,external_id,amount,expected_on,status,created_at,updated_at FROM TRANSFERS WHERE external_id = $1",
       [external_id]
     );
-
     return rows[0];
   }
 
@@ -38,6 +37,6 @@ export class TransferRepository {
       "SELECT id,external_id,amount,expected_on,status,created_at,updated_at FROM TRANSFERS"
     );
 
-    return rows[0];
+    return rows;
   }
 }

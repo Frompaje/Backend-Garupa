@@ -58,8 +58,9 @@ export class TransferController {
     try {
       const repository = new TransferRepository();
       const usecase = new ListAllTransferUseCase(repository);
+      const { transfers } = await usecase.execute();
 
-      res.status(200).send(usecase);
+      res.status(200).send(transfers);
 
       logger.info(`[GET] /transfer/list - 200 - List Transfer successfully`);
     } catch (error) {
