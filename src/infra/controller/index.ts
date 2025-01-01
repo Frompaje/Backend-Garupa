@@ -1,10 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import { CreatedTransferSchema } from "./schema/created-transfer-schema";
-import { ListTransferSchema } from "./schema/list-transfer-schema";
+import { ListTransferSchema } from "./schema/get-transfer-schema";
 import { TransferRepository } from "../../app/repository";
 import { CreatedTransferUseCase } from "../../app/usecase/created-transfer-usecase";
 import { GetTransferUseCase } from "../../app/usecase/get-transfer-usecase";
 import { logger } from "../../config/logger";
+import { ListAllTransferUseCase } from "../../app/list-transfers-usecase";
 
 export class TransferController {
   async createdTransfer(
@@ -47,6 +48,20 @@ export class TransferController {
       logger.info(
         `[GET] /transfer/${id} - 200 - Transfer retrieved successfully`
       );
+    } catch (error) {
+      logger.error(error);
+      next(error);
+    }
+  }
+
+  async listAllTransfers(_: Request, res: Response, next: NextFunction) {
+    try {
+      const repository = new TransferRepository();
+      const usecase = new ListAllTransferUseCase(repository);
+
+      res.status(200).send(usecase);
+
+      logger.info(`[GET] /transfer/list - 200 - List Transfer successfully`);
     } catch (error) {
       logger.error(error);
       next(error);
