@@ -69,7 +69,7 @@ npm run dev
 ```ts
 {
     "externalId":"123",
-    "amount":100.50,
+    "amount":"100.50",
     "expectedOn":"2024-12-30T14:00:00Z" // VALOR OPCIONAL ,
 }
 ```
