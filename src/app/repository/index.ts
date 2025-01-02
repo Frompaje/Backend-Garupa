@@ -15,7 +15,7 @@ export class TransferRepository {
     );
   }
 
-  async getTransferById(id: string) {
+  async getById(id: string) {
     const { rows } = await pg.query(
       "SELECT id,external_id,amount,expected_on,status,created_at,updated_at FROM TRANSFERS WHERE id = $1",
       [id]
@@ -24,7 +24,7 @@ export class TransferRepository {
     return rows[0];
   }
 
-  async getTransferByExternalId(external_id: string) {
+  async getByExternalId(external_id: string) {
     const { rows } = await pg.query(
       "SELECT id,external_id,amount,expected_on,status,created_at,updated_at FROM TRANSFERS WHERE external_id = $1",
       [external_id]
@@ -32,7 +32,7 @@ export class TransferRepository {
     return rows[0];
   }
 
-  async listTransfers(input: { page: number; search: string; take: number }) {
+  async list(input: { page: number; search: string; take: number }) {
     const { page, search, take } = input;
 
     const offSet = (page - 1) * take;
@@ -52,7 +52,7 @@ export class TransferRepository {
     return rows;
   }
 
-  async countTransfers(input: { search: string }) {
+  async count(input: { search: string }) {
     const { search } = input;
 
     const { rows } = await pg.query(

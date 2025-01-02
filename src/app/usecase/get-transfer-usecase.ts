@@ -5,7 +5,7 @@ export class GetTransferUseCase {
   constructor(private readonly repository: TransferRepository) {}
 
   async execute(id: string) {
-    const transfer = await this.repository.getTransferById(id);
+    const transfer = await this.repository.getById(id);
     
     if (!transfer) {
       throw new TransferDoesNotExist();

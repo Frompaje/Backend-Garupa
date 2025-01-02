@@ -17,7 +17,7 @@ export class CreatedTransferUseCase {
        status = setStatustTransfer(expected_on);
     }
 
-    const transfer = await this.repository.getTransferByExternalId(external_id);
+    const transfer = await this.repository.getByExternalId(external_id);
 
     if (transfer) {
       throw new DuplicateExternalIdError();

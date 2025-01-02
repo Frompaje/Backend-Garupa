@@ -5,8 +5,8 @@ import { TransferRepository } from "../../app/repository";
 import { CreatedTransferUseCase } from "../../app/usecase/created-transfer-usecase";
 import { GetTransferUseCase } from "../../app/usecase/get-transfer-usecase";
 import { logger } from "../../config/logger";
-import { ListAllTransferUseCase } from "../../app/usecase/list-transfers-usecase";
 import { ListTransferSchema } from "./schema/list-transfers-schema";
+import { ListTransferUseCase } from "../../app/usecase/list-transfers-usecase";
 
 export class TransferController {
   async createdTransfer(
@@ -60,7 +60,7 @@ export class TransferController {
       const { page, search, take } = ListTransferSchema.parse(req.query);
 
       const repository = new TransferRepository();
-      const usecase = new ListAllTransferUseCase(repository);
+      const usecase = new ListTransferUseCase(repository);
 
       const output = await usecase.execute({
         page: page || 1,
