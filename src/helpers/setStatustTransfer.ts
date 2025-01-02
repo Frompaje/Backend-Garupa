@@ -9,7 +9,7 @@ export function setStatustTransfer(expected_on: string): string {
   if (today >= dueDate) {
     return "Recusado";
   } else if (new Date(expected_on) > today) {
-    return "Em Analise";
+    return "Em análise";
   } else {
     return "Aprovado";
   }
