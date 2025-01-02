@@ -26,7 +26,7 @@ describe("[Usecase] List Transfer", () => {
       updated_at: null,
     };
 
-    vi.spyOn(repository, "getTransferById").mockResolvedValueOnce(data);
+    vi.spyOn(repository, "getById").mockResolvedValueOnce(data);
 
     expect(
       await usecase.execute("ea97cce3-11c9-46f9-a5a9-cb5480cdf561")
@@ -36,7 +36,7 @@ describe("[Usecase] List Transfer", () => {
   });
 
   it("Should show the error TransferDoesNotExist", async () => {
-    vi.spyOn(repository, "getTransferById").mockRejectedValueOnce(new TransferDoesNotExist());
+    vi.spyOn(repository, "getById").mockRejectedValueOnce(new TransferDoesNotExist());
 
     expect(
       usecase.execute("ea97cce3-11c9-46f9-a5a9-cb5480cdf569")

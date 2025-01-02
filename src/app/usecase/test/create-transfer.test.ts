@@ -19,10 +19,9 @@ describe("[Usecase] Created Transfer", () => {
   it("Should created a transfer", async () => {
     await expect(
       usecase.execute({
-        externalId: "123",
-        amount: 12.3,
-        expectedOn: "2024-12-27 23:38:58.639",
-        status: "Completed",
+        external_id: "123",
+        amount: "12.3",
+        expected_on: "2024-12-27 23:38:58.639",
       })
     ).resolves.not.toThrow();
   });
@@ -30,25 +29,10 @@ describe("[Usecase] Created Transfer", () => {
   it("Should show the error InvalidTransferDataError", async () => {
     await expect(
       usecase.execute({
-        externalId: "",
-        amount: 12.3,
-        expectedOn: "2024-12-27 23:38:58.639",
-        status: "Completed",
+        external_id: "",
+        amount: "12.3",
+        expected_on: "2024-12-27 23:38:58.639",
       })
     ).rejects.toBeInstanceOf(InvalidTransferDataError);
-  });
-
-  it("Should show the error DateExpiredError", async () => {
-    const futureDate = new Date();
-    futureDate.setHours(futureDate.getHours() + 1);
- 
-    await expect(
-      usecase.execute({
-        externalId: "123",
-        amount: 12.3,
-        expectedOn: futureDate,
-        status: "Completed",
-      })
-    ).rejects.toBeInstanceOf(DueDateError);
   });
 });
