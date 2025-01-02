@@ -71,8 +71,13 @@ npm run dev
     "externalId":"123",
     "amount":100.50,
     "expectedOn":"2024-12-30T14:00:00Z" // VALOR OPCIONAL ,
-    "status":"Completed"
 }
+```
+
+<b>Response: </b>
+
+```ts
+  Transfer created successfully
 ```
 
 <br>
@@ -85,6 +90,22 @@ npm run dev
 
 ```ts
 {
-    "id":"selecione-um-id-existente",
+"id":"065bdd01-3b88-4bb3-af9b-fc71fa728f81",
+}
+```
+
+<b>Response: </b>
+
+```ts
+{
+    "transfer": {
+        "id": "065bdd01-3b88-4bb3-af9b-fc71fa728f81",
+        "external_id": "333222",
+        "amount": "30000.00",
+        "expected_on": null,
+        "status": "Em analise",
+        "created_at": "2025-01-02T19:14:59.927Z",
+        "updated_at": null
+    }
 }
 ```
