@@ -1,11 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 import { CreatedTransferSchema } from "./schema/created-transfer-schema";
-import { ListTransferSchema } from "./schema/get-transfer-schema";
+import { GetTransferSchema } from "./schema/get-transfer-schema";
 import { TransferRepository } from "../../app/repository";
 import { CreatedTransferUseCase } from "../../app/usecase/created-transfer-usecase";
 import { GetTransferUseCase } from "../../app/usecase/get-transfer-usecase";
 import { logger } from "../../config/logger";
-import { ListAllTransferUseCase } from "../../app/list-transfers-usecase";
+import { ListAllTransferUseCase } from "../../app/usecase/list-transfers-usecase";
+import { ListTransferSchema } from "./schema/list-transfers-schema";
 
 export class TransferController {
   async createdTransfer(
@@ -37,7 +38,7 @@ export class TransferController {
 
   async getTransferById(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = ListTransferSchema.parse(req.params);
+      const { id } = GetTransferSchema.parse(req.params);
 
       const repository = new TransferRepository();
       const usecase = new GetTransferUseCase(repository);
@@ -54,13 +55,20 @@ export class TransferController {
     }
   }
 
-  async listAllTransfers(_: Request, res: Response, next: NextFunction) {
+  async listAllTransfers(req: Request, res: Response, next: NextFunction) {
     try {
+      const { page, search, take } = ListTransferSchema.parse(req.query);
+
       const repository = new TransferRepository();
       const usecase = new ListAllTransferUseCase(repository);
-      const { transfers } = await usecase.execute();
 
-      res.status(200).send(transfers);
+      const output = await usecase.execute({
+        page: page || 1,
+        search: search || "",
+        take: take || 10,
+      });
+
+      res.status(200).send(output);
 
       logger.info(`[GET] /transfer/list - 200 - List Transfer successfully`);
     } catch (error) {

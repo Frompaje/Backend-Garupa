@@ -32,11 +32,34 @@ export class TransferRepository {
     return rows[0];
   }
 
-  async listAllTransfers() {
-    const { rows } = await pg.query(
-      "SELECT id,external_id,amount,expected_on,status,created_at,updated_at FROM TRANSFERS"
-    );
+  async listTransfers(input: { page: number; search: string; take: number }) {
+    const { page, search, take } = input;
+
+    const offSet = (page - 1) * take;
+    const query = `
+    SELECT id, external_id, amount, expected_on, status, created_at, updated_at
+    FROM TRANSFERS
+    WHERE ($1 = '' OR external_id ILIKE '%' || $1 || '%')
+    LIMIT $2 OFFSET $3
+  `;
+
+    const { rows } = await pg.query(query, [
+      search.toLowerCase(),
+      take,
+      offSet,
+    ]);
 
     return rows;
+  }
+
+  async countTransfers(input: { search: string }) {
+    const { search } = input;
+
+    const { rows } = await pg.query(
+      "SELECT COUNT(*) FROM TRANSFERS WHERE ($1 = '' OR external_id ILIKE '%' || $1 || '%')",
+      [search.toLowerCase()]
+    );
+
+    return rows.at(0).count;
   }
 }

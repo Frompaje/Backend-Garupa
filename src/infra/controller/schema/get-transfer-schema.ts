@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const ListTransferSchema = z.object({
+export const GetTransferSchema = z.object({
   id: z.string().nonempty(),
 })
 
