@@ -6,6 +6,12 @@ Este projeto implementa um serviço de transferência financeira
 full-stack, onde os usuários podem criar transferências e verificar
 datas de vencimento.
 
+## Deploy 🌍
+Se você não quiser baixar e configurar o projeto localmente, disponibilizamos o serviço completo online!
+
+- **Frontend**: Acesse 👉 [garupa.vercel.app](https://garupa.vercel.app)
+- **Backend** e **Banco**: Hospedados na Railway, garantindo tudo funcionando direitinho. 🚀
+
 ## ⚙️ Funcionalidades
 
 Criar Transferência: O serviço backend receberá uma requisição para criar uma transferência de um determinado valor (com até 2 casas decimais). O valor e as contas de origem e destino serão validados, e a transferência será registrada.
