@@ -37,7 +37,7 @@ export class CreatedTransferUseCase {
       external_id,
       amount: formatAmount,
       expected_on,
-      status: status || "Em analise",
+      status: status || "Em análise",
     });
   }
 }
