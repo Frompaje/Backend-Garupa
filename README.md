@@ -76,7 +76,7 @@ npm run dev
 
 > <b> Esta rota é responsável pela criação de novas transferências. Ao fazer uma requisição POST para esse endpoint, você cria uma nova transferência com os dados fornecidos no corpo da requisição. </b>
 
-#### POST http://localhost:3333/transfers
+#### 🟧 POST http://localhost:3333/transfers
 
 <b>Request Body: </b>
 
@@ -98,7 +98,7 @@ npm run dev
 
 > <b>Essa rota permite que você recupere as informações de uma transferência existente, especificando seu id na URL.</b>
 
-#### GET http://localhost:3333/transfers/:id
+#### 🟩 GET http://localhost:3333/transfers/search/:id
 
 <b>Request Params: </b>
 
@@ -123,3 +123,62 @@ npm run dev
     }
 }
 ```
+
+#### 🟩 GET http://localhost:3333/transfers/list
+>Esta rota é responsável por retornar uma lista de transferências existentes. Ao fazer uma requisição GET para esse endpoint, você pode visualizar todas as transferências registradas no sistema, incluindo detalhes como valor, status e data de criação.
+
+<b>Response: </b>
+
+```ts
+{
+    "data": [
+        {
+            "id": "989462b0-cca0-4dfb-8649-83ceab090bd4",
+            "external_id": "EXAM80",
+            "amount": "90.00",
+            "expected_on": "2025-01-03T06:00:00.000Z",
+            "status": "Aprovado",
+            "created_at": "2025-01-03T19:48:07.940Z",
+            "updated_at": null
+        },
+        {
+            "id": "14324f55-4215-4181-8598-fec589a9a4d6",
+            "external_id": "EXAM25",
+            "amount": "33.33",
+            "expected_on": "2025-04-17T06:00:00.000Z",
+            "status": "Em análise",
+            "created_at": "2025-01-03T19:48:30.271Z",
+            "updated_at": null
+        },
+        {
+            "id": "541bd174-b689-46b4-b512-16d16f5adceb",
+            "external_id": "EXAM31",
+            "amount": "8.00",
+            "expected_on": null,
+            "status": "Em análise",
+            "created_at": "2025-01-03T19:48:58.886Z",
+            "updated_at": null
+        },
+        {
+            "id": "0a35056e-00be-4eda-b143-54195dbd4be4",
+            "external_id": "AEMX34",
+            "amount": "70.00",
+            "expected_on": null,
+            "status": "Em análise",
+            "created_at": "2025-01-03T19:49:20.267Z",
+            "updated_at": null
+        },
+    ],
+    "meta": {
+        "page": 1,
+        "take": 10,
+        "total": 12
+    }
+}
+```
+## 🎥 Demonstração do Projeto
+
+
+https://github.com/user-attachments/assets/577cfa02-9113-4e0e-9380-f470455037cd
+
+
