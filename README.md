@@ -1,18 +1,26 @@
 # Serviço de Transferência - Backend
 
-## Descrição
+## 📜 Descrição
 
 Este projeto implementa um serviço de transferência financeira
 full-stack, onde os usuários podem criar transferências e verificar
 datas de vencimento.
 
-## Funcionalidades
+## ⚙️ Funcionalidades
 
 Criar Transferência: O serviço backend receberá uma requisição para criar uma transferência de um determinado valor (com até 2 casas decimais). O valor e as contas de origem e destino serão validados, e a transferência será registrada.
 
 Verificar Data de Vencimento: O backend validará a data de vencimento, caso seja fornecida. Se a data for anterior à data atual, a transferência será rejeitada.
 
 Persistência de Dados: Todas as transferências serão armazenadas em um banco de dados, permitindo a consulta e auditoria de todas as transações realizadas.
+
+## Pré-requisitos 🛠️
+Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
+
+- 🟢 **Node.js** (versão LTS recomendada).
+- 📦 **Gerenciador de pacotes** npm.
+- 🖥️ **Git** para clonar o repositório.
+- 🐳  **Docker** para gerenciar o banco de dados com facilidade. 
 
 ## Dependências
 
@@ -26,7 +34,7 @@ Persistência de Dados: Todas as transferências serão armazenadas em um banco 
 - <b>vitest-mock-extended:</b> Biblioteca para mocks avançados durante testes com Vitest, permitindo simulações mais precisas e extensas de funções e objetos.<br>
 - <b>pino:</b> Biblioteca de logging para Node.js, altamente performática e configurável, utilizada para gerar logs estruturados e facilitar o rastreamento de eventos no backend do sistema.<br>
 
-## Como rodar
+## 🚀 Como rodar
 
 É necessário criar uma cópia deste repositório com o git para a sua máquina local.
 Após clonar o projeto, crie seu arquivo `.env` e coloque as variavies ambiente
@@ -56,7 +64,7 @@ Agora, para iniciar o projeto, rode o comando abaixo no terminal:
 npm run dev
 ```
 
-## Rotas
+## 🌐 Rotas
 
 #### API Endpoints
 
