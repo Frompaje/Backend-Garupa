@@ -6,7 +6,7 @@ Este projeto implementa um serviço de transferência financeira
 full-stack, onde os usuários podem criar transferências e verificar
 datas de vencimento.
 
-## Deploy 🌍
+##  🌍 Deploy 
 Se você não quiser baixar e configurar o projeto localmente, disponibilizamos o serviço completo online!
 
 - **Frontend**: Acesse 👉 [garupa.vercel.app](https://garupa.vercel.app)
@@ -20,7 +20,7 @@ Verificar Data de Vencimento: O backend validará a data de vencimento, caso sej
 
 Persistência de Dados: Todas as transferências serão armazenadas em um banco de dados, permitindo a consulta e auditoria de todas as transações realizadas.
 
-## Pré-requisitos 🛠️
+## 🛠️ Pré-requisitos 
 Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
 - 🟢 **Node.js** (versão LTS recomendada).
@@ -28,7 +28,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 - 🖥️ **Git** para clonar o repositório.
 - 🐳  **Docker** para gerenciar o banco de dados com facilidade. 
 
-## Dependências
+## 🧰 Dependências
 
 - <b>Express:</b> Framework minimalista e flexível para construir APIs e servidores web em Node.js. <br>
 - <b>pg:</b> Driver PostgreSQL para Node.js, utilizado para conectar e realizar operações em um banco de dados PostgreSQL. <br>
